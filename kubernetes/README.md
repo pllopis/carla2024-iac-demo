@@ -74,6 +74,25 @@ curl.exe -LO "https://dl.k8s.io/release/v1.31.0/bin/windows/amd64/kubectl.exe"
 
 ## Verify installation
 
+### Install a cluster
+
+```
+$ kind create cluster --name carla
+Creating cluster "carla" ...
+ ✓ Ensuring node image (kindest/node:v1.29.2) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-carla"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-carla
+
+Thanks for using kind! 😊
+```
+
 ### Cluster created
 
 ```
@@ -109,15 +128,15 @@ kubectl apply -f http-echo.yaml
 Check deployment
 
 ```
+kubectl get svc -n http-echo
+```
+
+```
 kubectl get deployments -n http-echo
 ```
 
 ```
 kubectl get pods -n http-echo
-```
-
-```
-kubectl get svc -n http-echo
 ```
 
 ## Interact with echo-server
